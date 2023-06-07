@@ -17,20 +17,7 @@ const nama = [
   "Penelope",
 ];
 
-const searchName = function (inisial, max, callback) {
-  try {
-    if (typeof inisial != "string" && typeof max != "number")
-      throw "inisial harus string dan max harus number";
-    if (typeof inisial != "string") throw "inisial harus string";
-    if (typeof max != "number") throw "max harus number";
-    if (!inisial) throw "inisial harus diisi";
-    carinama(inisial, max, callback);
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-const carinama = function (inisial, max, callback) {
+const filtering = function (inisial, max, callback) {
   let filterNama = nama
     .filter((nama) => nama.includes(inisial.toLowerCase()))
     .slice(0, max);
@@ -39,6 +26,19 @@ const carinama = function (inisial, max, callback) {
 
 const callback = function (filterNama) {
   console.log(filterNama);
+};
+
+const searchName = function (inisial, max, callback) {
+  try {
+    if (typeof inisial != "string" && typeof max != "number")
+      throw "inisial harus string dan max harus number";
+    if (typeof inisial != "string") throw "inisial harus string";
+    if (typeof max != "number") throw "max harus number";
+    if (!inisial) throw "inisial harus diisi";
+    filtering(inisial, max, callback);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 searchName("a", 5, callback);
